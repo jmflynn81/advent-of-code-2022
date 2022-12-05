@@ -7,17 +7,15 @@ const syncReadFile = (filename) => {
 };
 
 const arr = syncReadFile("../input.txt");
-let currentElf = 1;
 let currentCaloire = 0;
 let elfArray = [];
 for (const calorieValue of arr) {
-  if (calorieValue !== "") {
-    currentCaloire += Number(calorieValue);
-  } else {
+  if (calorieValue === "") {
     elfArray.push(currentCaloire);
     currentCaloire = 0;
-    currentElf += 1;
+    continue;
   }
+  currentCaloire += Number(calorieValue);
 }
 elfArray.sort();
 const topNumbers = 3;
